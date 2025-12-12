@@ -58,7 +58,6 @@
 
         /* --- CONTENEDOR DE LA IMAGEN SEPARADORA --- */
         .full-width-container {
-            /* Mobile: Ancho completo (100%) */
             width: 100%;
             max-width: 100%;
             padding: 0;
@@ -110,8 +109,6 @@
             margin-left: -20px;
             margin-right: -20px;
             width: calc(100% + 40px); 
-            
-            /* Eliminamos margen inferior para facilitar el overlap */
             margin-bottom: 0px; 
         }
 
@@ -127,13 +124,8 @@
             display: block;
             width: 50px; 
             height: auto;
-            
-            /* AJUSTE MOBILE: Margen negativo grande para subir sobre la foto */
-            margin-top: -160px; 
-            
+            margin-top: -80px; 
             margin-bottom: 10px; 
-            
-            /* Importante: Z-index para que quede ENCIMA de la foto */
             position: relative;
             z-index: 10;
         }
@@ -144,8 +136,6 @@
             margin-bottom: 30px;
             word-wrap: break-word;
             margin-top: 0;
-            
-            /* Z-index para asegurar visibilidad sobre el fondo si fuera necesario */
             position: relative;
             z-index: 10;
         }
@@ -165,10 +155,24 @@
             font-size: 1.5rem;
             margin-bottom: 5px; 
             font-style: italic;
-            
-            /* Z-index para el año también */
             position: relative;
             z-index: 10;
+        }
+
+        /* --- ELEMENTOS NUEVOS EN MAPA --- */
+        .map-internal-logo {
+            display: block;
+            margin: 0 auto 30px auto; /* Centrado y espacio abajo */
+            max-width: 120px; /* Tamaño del logo */
+            height: auto;
+        }
+
+        .map-internal-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin-bottom: 30px; /* Espacio antes del mapa */
+            border-radius: 4px;
         }
 
         /* CONFIGURACIÓN ESCRITORIO */
@@ -194,12 +198,10 @@
                 opacity: 1; 
             }
 
-            /* CAMBIO: Eliminamos el degradado para quitar transparencia */
             .hero::after {
                 display: none; 
             }
             
-            /* Reseteamos el margen del icono para que no suba en Desktop */
             .hero-top-icon {
                 margin-top: 0;
                 margin-bottom: 20px;
@@ -209,15 +211,14 @@
                 margin-bottom: 10px;
             }
             
-            /* CAMBIO: Ajustamos el separador para alinearse con la galería */
             .full-width-container {
-                max-width: 1200px; /* Ancho máximo igual a las secciones */
-                margin: 0 auto;    /* Centrado */
-                padding: 0 20px;   /* Padding lateral para alinear con el texto */
+                max-width: 1200px; 
+                margin: 0 auto;    
+                padding: 0 20px;   
                 margin-bottom: 40px; 
             }
 
-            .separator-picture {
+            .separator-picture, .gallery-header-image {
                 border-radius: 4px; 
             }
             
@@ -491,8 +492,14 @@
     <section class="map-section">
         <h2>Locación</h2>
         <p style="margin-bottom: 20px;">Bodega LAMADRID ESTATE WINES, Luján de Cuyo, Mendoza.</p>
+        
+        <img src="./image/Marca-fondo-transparente.png" alt="Logo Locación" class="map-internal-logo">
+        
+        <img src="./image/fachada-de-la-bodega.jpg" alt="Imagen Locación" class="map-internal-image">
+
         <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.5517522180457!2d-68.964604!3d-33.03635499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967dde289586ba99%3A0xa4e17f04467080f!2sLamadrid%20Estate%20Wines!5e1!3m2!1ses-419!2sar!4v1765575726718!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.5517522180457!2d-68.964604!3d-33.03635499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967dde289586ba99%3A0xa4e17f04467080f!2sLamadrid%20Estate%20Wines!5e1!3m2!1ses-419!2sar!4v1765575726718!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        
+        </div>
     </section>
 
     <section class="sponsors-section">
@@ -510,7 +517,7 @@
     </section>
 
     <footer>
-        <p>© 2026 Desayuno Real. Todos los derechos reservados.</p>
+        <p>© 2025 Desayuno Real. Todos los derechos reservados.</p>
     </footer>
 
 </body>
