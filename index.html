@@ -48,12 +48,35 @@
             object-fit: cover;
         }
 
-        /* --- SECCIONES GENERALES --- */
+        /* --- SECCIONES GENERALES (Con límite de ancho) --- */
         section {
             padding: 40px 20px; 
             max-width: 1200px;
             margin: 0 auto;
             width: 100%;
+        }
+
+        /* --- NUEVO: CONTENEDOR ANCHO COMPLETO --- */
+        .full-width-container {
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+            margin: 0;
+            display: block;
+        }
+        
+        /* Aseguramos que la etiqueta picture no genere espacios extra */
+        .separator-picture {
+            display: block;
+            width: 100%;
+        }
+
+        /* Estilo de la imagen separadora */
+        .gallery-header-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
         }
 
         /* --- HERO (Portada) --- */
@@ -105,7 +128,7 @@
             min-height: 250px; 
         }
 
-        /* --- NUEVO: ICONO SUPERIOR --- */
+        /* --- ICONO SUPERIOR --- */
         .hero-top-icon {
             display: block;
             width: 50px; 
@@ -139,8 +162,6 @@
             font-style: italic;
             position: relative;
         }
-
-        /* (ELIMINADO) .hero-bottom-logo ya no se usa aquí */
 
         /* CONFIGURACIÓN ESCRITORIO */
         @media (min-width: 1024px) {
@@ -186,18 +207,6 @@
         }
 
         /* --- GALERÍA HORIZONTAL --- */
-        
-        /* NUEVO CSS: Imagen cabecera de galería */
-        .gallery-header-image {
-            display: block;
-            height: auto;
-            /* Mobile: Ancho completo usando márgenes negativos para romper el padding de la sección */
-            width: calc(100% + 40px);
-            margin-left: -20px;
-            margin-right: -20px;
-            margin-bottom: 40px; /* Espacio antes del título */
-        }
-
         .gallery-section h2 {
             font-size: 3rem;
             margin-bottom: 40px;
@@ -234,18 +243,6 @@
             .gallery-item {
                 flex: 0 0 400px;
                 height: 500px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            /* NUEVO CSS Desktop: Ajuste de la imagen cabecera */
-            .gallery-header-image {
-                /* Reseteamos los márgenes negativos de mobile */
-                margin-left: 0;
-                margin-right: 0;
-                /* Ancho 100% del contenedor padre (que es el mismo ancho de la galería) */
-                width: 100%;
-                margin-bottom: 60px;
             }
         }
 
@@ -419,11 +416,22 @@
         
         <p class="hero-text">El Desayuno Real no solo genera un clima social de celebración, sino que se erige como un foro dinámico de <strong>intercambio, servicio y participación,</strong> reforzando los lazos entre el sector público y el privado.</p>
         
-        </section>
+    </section>
+
+    <div class="full-width-container">
+        
+        <picture class="separator-picture">
+            
+            <source media="(min-width: 1024px)" srcset="./image/imagen_horizontal.png">
+            
+            <img src="./image/flyer boceto 2_Mesa de trabajo 1 copia 28.png" alt="Separador Visual" class="gallery-header-image">
+            
+        </picture>
+
+    </div>
 
     <section class="gallery-section">
-        <img src="./image/imagen_horizontal.png" alt="Logo Adicional" class="gallery-header-image">
-
+        
         <h2>Galería</h2>
         <div class="gallery-container">
             <div class="gallery-item"><img src="./image/Imagen-de-WhatsApp-2025-03-07-a-las-10.59.14_6eca3d9c.png" alt="DR"></div>
@@ -461,7 +469,7 @@
         
         <div class="sponsors-grid-main">
             <img src="./image/ciudadano.v2.svg" alt="Ciudadano.news" class="sponsor-svg">
-            <img src="./image/Logo CEGC-01.svg" alt="Cooperativa EGC" class="sponsor-svg">
+            <img src="./image/Logo CEGC.svg" alt="Cooperativa EGC" class="sponsor-svg">
         </div>
     </section>
 
