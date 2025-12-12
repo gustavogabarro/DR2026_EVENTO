@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
     <style>
         /* --- VARIABLES Y ESTÉTICA GENERAL --- */
@@ -15,7 +15,8 @@
             --bg-color: #F9F8F4;
             --text-color: #1A1A1A;
             --accent-color: #C5A059;
-            --font-display: 'Bodoni Moda', serif;
+            /* Actualizamos la variable de fuente a Playfair Display */
+            --font-display: 'Playfair Display', serif;
             --font-body: 'Lato', sans-serif;
         }
 
@@ -73,7 +74,7 @@
 
         .hero h1 {
             font-size: clamp(3rem, 10vw, 8rem);
-            line-height: 0.9;
+            line-height: 1.1; 
             margin-bottom: 30px;
         }
 
@@ -82,9 +83,7 @@
             font-weight: 300;
             max-width: 800px;
             margin-bottom: 20px;
-            
-            /* CAMBIO: Alineación centrada natural (sin forzar bordes) */
-            text-align: center; 
+            text-align: center; /* Alineación centrada natural */
         }
         
         .hero-year {
@@ -96,23 +95,24 @@
 
         /* IMAGEN SUPERIOR DERECHA */
         .top-right-img {
-            /* CAMBIO: Ahora se muestra siempre (display: block) */
             display: block; 
             position: absolute;
             top: 0;
             right: 0;
             z-index: -1;
             
-            /* Tamaño para MÓVIL */
-            width: 45vw; /* Ocupa casi la mitad del ancho en móvil */
-            max-width: 200px; 
+            /* Configuración Móvil */
+            width: 45vw; 
+            max-width: 200px;
+            opacity: 0.8;
         }
 
-        /* Ajustes para ESCRITORIO */
+        /* Configuración Escritorio */
         @media (min-width: 1024px) {
             .top-right-img {
                 width: 30vw; 
                 max-width: 600px; 
+                opacity: 1;
             }
         }
 
@@ -304,7 +304,7 @@
 <body>
 
     <section class="hero">
-        <img src="/image/hoja sola.png" alt="Logo Superior" class="top-right-img">
+        <img src="./image/hoja sola.png" alt="Logo Superior" class="top-right-img">
 
         <p class="hero-year">Edición 2026</p>
         <h1>Desayuno<br>Real</h1>
@@ -321,12 +321,12 @@
     <section class="gallery-section">
         <h2>La Experiencia</h2>
         <div class="gallery-container">
-            <div class="gallery-item"><img src="/image/Desayuno 2022_180.JPG" alt="DR"></div>
-            <div class="gallery-item"><img src="/image/bf0a919b-c15a-4e7e-86f9-c19ddf3cdde2.jpeg" alt="DR"></div>
-            <div class="gallery-item"><img src="/image/desayuno-real-2025-10.jpg" alt="DR"></div>
-            <div class="gallery-item"><img src="/image/MA1_6550.JPG" alt="DR"></div>
-            <div class="gallery-item"><img src="/image/MA1_6894.JPG" alt="DR"></div>
-            <div class="gallery-item"><img src="/image/DSC00645.jpg" alt="DR"></div>
+            <div class="gallery-item"><img src="./image/Desayuno 2022_180.JPG" alt="DR"></div>
+            <div class="gallery-item"><img src="./image/bf0a919b-c15a-4e7e-86f9-c19ddf3cdde2.jpeg" alt="DR"></div>
+            <div class="gallery-item"><img src="./image/desayuno-real-2025-10.jpg" alt="DR"></div>
+            <div class="gallery-item"><img src="./image/MA1_6550.JPG" alt="DR"></div>
+            <div class="gallery-item"><img src="./image/MA1_6894.JPG" alt="DR"></div>
+            <div class="gallery-item"><img src="./image/DSC00645.jpg" alt="DR"></div>
         </div>
         <p style="text-align: center; margin-top: 10px; font-style: italic; opacity: 0.5;">Deslice para ver más</p>
     </section>
@@ -354,13 +354,13 @@
         <h2>Organizan</h2>
         
         <div class="sponsors-grid-main">
-            <img src="/image/logo_cn.svg" alt="Ciudadano.news" class="sponsor-svg">
-            <img src="/image/logo_cegc.svg" alt="Cooperativa EGC" class="sponsor-svg">
+            <img src="./image/logo_cn.svg" alt="Ciudadano.news" class="sponsor-svg">
+            <img src="./image/logo_cegc.svg" alt="Cooperativa EGC" class="sponsor-svg">
         </div>
     </section>
 
     <section class="closing-section">
-        <img src="/image/tu-logo.svg" alt="Logo Desayuno Real" class="closing-logo">
+        <img src="./image/logo DR 26.svg" alt="Logo Desayuno Real" class="closing-logo">
         <h2>SÉ PARTE DEL EVENTO</h2>
         <p>Una experiencia única te espera.</p>
     </section>
