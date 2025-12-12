@@ -61,9 +61,11 @@
             max-width: 100%;
             width: 100%;
             margin: 0;
-            padding: 20px 20px 40px 20px; 
+            padding: 0 20px 40px 20px; /* Quitamos padding superior para que la img toque el borde en desktop si es necesario */
+            
             min-height: auto; 
             height: auto;
+            
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -71,13 +73,84 @@
             text-align: center;
             position: relative; 
             z-index: 1; 
+            overflow: hidden; /* Necesario para contener la imagen absoluta en desktop */
         }
 
+        /* --- ESTRUCTURA DE IMAGEN INTELIGENTE (PICTURE) --- */
+        .hero-picture {
+            display: block;
+            width: 100%;
+            z-index: -1;
+        }
+
+        .hero-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* ESTILOS MOBILE (Por defecto) */
+        .hero-picture {
+            position: relative;
+            /* Estos márgenes negativos fuerzan a la imagen a ocupar el ancho de pantalla
+               rompiendo el padding de 20px que tiene el padre */
+            margin-left: -20px;
+            margin-right: -20px;
+            width: calc(100% + 40px);
+            margin-bottom: 30px; /* Espacio antes del título */
+        }
+
+        .hero-img {
+            /* En mobile la imagen es relativa y empuja el contenido */
+            height: auto;
+            min-height: 250px; /* Altura mínima para que luzca */
+        }
+
+        /* ESTILOS DESKTOP */
+        @media (min-width: 1024px) {
+            .hero {
+                min-height: 90vh; /* En desktop damos altura para que la imagen horizontal luzca */
+                padding: 80px 20px; 
+            }
+
+            .hero-picture {
+                /* En desktop la imagen se va al fondo absoluta */
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+
+            .hero-img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; /* Recorta la imagen para llenar el fondo sin deformar */
+                opacity: 0.3; /* Bajamos opacidad para que el texto se lea encima */
+            }
+
+            /* Opcional: Un gradiente para que el texto se lea mejor sobre la imagen horizontal */
+            .hero::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to bottom, rgba(249,248,244,0.8), rgba(249,248,244,1));
+                z-index: -1;
+            }
+        }
+
+        /* --- TEXTOS HERO --- */
         .hero h1 {
             font-size: clamp(3.5rem, 12vw, 8rem);
             line-height: 1; 
             margin-bottom: 30px;
             word-wrap: break-word;
+            position: relative; /* Para quedar sobre el fondo */
         }
 
         .hero-text {
@@ -87,6 +160,7 @@
             margin-bottom: 20px;
             text-align: left; 
             width: 100%;
+            position: relative;
         }
         
         .hero-year {
@@ -94,18 +168,7 @@
             font-size: 1.5rem;
             margin-bottom: 10px;
             font-style: italic;
-        }
-
-        /* --- IMAGEN SUPERIOR (Hoja) --- */
-        .top-right-img {
-            display: block;
-            position: relative; 
-            width: 100%;        
-            max-width: 500px;   
-            height: auto;
-            opacity: 1;         
-            margin: 0 auto -40px auto; 
-            z-index: 0;
+            position: relative;
         }
 
         /* --- NUEVO LOGO AL FINAL DEL TEXTO --- */
@@ -114,32 +177,12 @@
             margin: 40px auto 0 auto;
             width: 80%; 
             height: auto;
+            position: relative;
         }
 
-        /* CONFIGURACIÓN ESCRITORIO */
         @media (min-width: 1024px) {
-            .hero {
-                min-height: auto; 
-                padding: 80px 20px 60px 20px; 
-            }
-
-            .top-right-img {
-                position: absolute; 
-                top: 0;
-                right: 0;
-                width: 30vw; 
-                max-width: 600px; 
-                opacity: 1;
-                margin: 0; 
-                z-index: -1;
-            }
-
             .hero-bottom-logo {
                 width: 350px; 
-            }
-            
-            section {
-                padding: 60px 20px; 
             }
         }
 
@@ -282,16 +325,11 @@
             width: 100%;
         }
 
-        /* AJUSTE CORRECTIVO DE LOGOS */
         .sponsor-svg {
-            /* Dejamos que el navegador calcule el alto/ancho manteniendo proporción */
             height: auto;
             width: auto;
-            
-            /* Ponemos límites máximos */
-            max-height: 80px; /* No más alto de esto */
-            max-width: 250px; /* IMPORTANTE: Esto evita que el logo se estire demasiado horizontalmente */
-            
+            max-height: 80px; 
+            max-width: 250px; 
             opacity: 0.9;
             transition: opacity 0.3s;
         }
@@ -342,7 +380,12 @@
 <body>
 
     <section class="hero">
-        <img src="./image/hoja sola.png" alt="Logo Superior" class="top-right-img">
+        
+        <picture class="hero-picture">
+            <source media="(min-width: 1024px)" srcset="./image/cabecera.png/">
+            
+            <img src="./image/cabecera.png" alt="Imagen Hero" class="hero-img">
+        </picture>
 
         <p class="hero-year">Edición 2026</p>
         <h1>Desayuno<br>Real</h1>
