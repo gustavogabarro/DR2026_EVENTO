@@ -50,7 +50,7 @@
 
         /* --- SECCIONES GENERALES --- */
         section {
-            /* AJUSTE: Reduje el padding general de 60px a 40px para que todo esté más cerca */
+            /* Padding ajustado para reducir espacios blancos */
             padding: 40px 20px; 
             max-width: 1200px;
             margin: 0 auto;
@@ -62,11 +62,10 @@
             max-width: 100%;
             width: 100%;
             margin: 0;
-            /* AJUSTE: Padding inferior reducido a 20px para pegar el texto a la siguiente sección */
-            padding: 20px 20px 20px 20px; 
+            /* Padding inferior reducido */
+            padding: 20px 20px 40px 20px; 
             
-            /* AJUSTE CRÍTICO: 'auto' en lugar de '100vh' para móvil. 
-               Esto elimina el espacio blanco sobrante si la pantalla es alta. */
+            /* AJUSTE CLAVE: 'auto' elimina el espacio blanco sobrante en desktop y mobile */
             min-height: auto; 
             height: auto;
             
@@ -102,7 +101,7 @@
             font-style: italic;
         }
 
-        /* --- IMAGEN SUPERIOR --- */
+        /* --- IMAGEN SUPERIOR (Hoja) --- */
         .top-right-img {
             display: block;
             position: relative; 
@@ -114,12 +113,22 @@
             z-index: 0;
         }
 
+        /* --- NUEVO LOGO AL FINAL DEL TEXTO --- */
+        .hero-bottom-logo {
+            display: block;
+            margin: 40px auto 0 auto; /* Separación superior y centrado */
+            
+            /* Mobile: 80% del ancho */
+            width: 80%; 
+            height: auto;
+        }
+
         /* CONFIGURACIÓN ESCRITORIO (Pantallas grandes) */
         @media (min-width: 1024px) {
             .hero {
-                /* En escritorio sí dejamos que ocupe toda la pantalla para elegancia */
-                min-height: 100vh; 
-                padding: 100px 20px; 
+                /* En desktop también usamos auto para evitar espacios blancos excesivos si el contenido es corto */
+                min-height: auto; 
+                padding: 80px 20px 60px 20px; 
             }
 
             .top-right-img {
@@ -132,9 +141,15 @@
                 margin: 0; 
                 z-index: -1;
             }
+
+            /* Configuración del nuevo logo para Desktop */
+            .hero-bottom-logo {
+                /* Tamaño considerable pero controlado */
+                width: 350px; 
+            }
             
             section {
-                padding: 80px 20px; /* Restauramos padding más aireado en PC */
+                padding: 60px 20px; 
             }
         }
 
@@ -349,10 +364,12 @@
         <p class="hero-text">Este evento se ha consolidado como la <strong>cita cumbre de networking</strong> a nivel nacional y regional. Atrae anualmente a las figuras más influyentes del ámbito político (local y nacional), a empresarios líderes de Mendoza, Argentina y el extranjero, y a distinguidas <strong>instituciones.</strong></p>
         
         <p class="hero-text">El Desayuno Real no solo genera un clima social de celebración, sino que se erige como un foro dinámico de <strong>intercambio, servicio y participación,</strong> reforzando los lazos entre el sector público y el privado.</p>
+        
+        <img src="./image/logo DR 26.svg" alt="Logo Adicional" class="hero-bottom-logo">
     </section>
 
     <section class="gallery-section">
-        <h2>La Experiencia</h2>
+        <h2>Experiencia</h2>
         <div class="gallery-container">
             <div class="gallery-item"><img src="./image/Desayuno 2022_180.JPG" alt="DR"></div>
             <div class="gallery-item"><img src="./image/bf0a919b-c15a-4e7e-86f9-c19ddf3cdde2.jpeg" alt="DR"></div>
@@ -387,15 +404,14 @@
         <h2>Organizan</h2>
         
         <div class="sponsors-grid-main">
-            <img src="./image/logo_cn.svg" alt="Ciudadano.news" class="sponsor-svg">
-            <img src="./image/logo_cegc.svg" alt="Cooperativa EGC" class="sponsor-svg">
+            <img src="./image/ciudadano.v2.svg" alt="Ciudadano.news" class="sponsor-svg">
+            <img src="./image/Logo CEGC-01.svg" alt="Cooperativa EGC" class="sponsor-svg">
         </div>
     </section>
 
     <section class="closing-section">
-        <img src="./image/logo DR 26.svg" alt="Logo Desayuno Real" class="closing-logo">
         <h2>SÉ PARTE DEL EVENTO</h2>
-        <p>Una experiencia única te espera.</p>
+        <p>Una evento exclusivo te espera.</p>
     </section>
 
     <footer>
