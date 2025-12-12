@@ -15,7 +15,6 @@
             --bg-color: #F9F8F4;
             --text-color: #1A1A1A;
             --accent-color: #C5A059;
-            /* Actualizamos la variable de fuente a Playfair Display */
             --font-display: 'Playfair Display', serif;
             --font-body: 'Lato', sans-serif;
         }
@@ -26,12 +25,15 @@
             box-sizing: border-box;
         }
 
-        body {
+        /* AJUSTE 1: Evitar desborde horizontal */
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden; /* Esto es clave para que no se mueva para los costados */
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: var(--font-body);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         h1, h2, h3 {
@@ -49,9 +51,10 @@
 
         /* --- SECCIONES GENERALES --- */
         section {
-            padding: 80px 20px;
+            padding: 60px 20px; /* Reduje un poco el padding vertical para mobile */
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%; /* Asegura que no exceda contenedor */
         }
 
         /* --- HERO (Portada) --- */
@@ -73,9 +76,11 @@
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 10vw, 8rem);
+            /* AJUSTE 2: Tamaño mínimo reducido a 2.5rem para evitar cortes en celus chicos */
+            font-size: clamp(2.5rem, 10vw, 8rem);
             line-height: 1.1; 
             margin-bottom: 30px;
+            word-wrap: break-word; /* Prevención extra */
         }
 
         .hero-text {
@@ -83,7 +88,7 @@
             font-weight: 300;
             max-width: 800px;
             margin-bottom: 20px;
-            text-align: center; /* Alineación centrada natural */
+            text-align: center; 
         }
         
         .hero-year {
@@ -114,6 +119,11 @@
                 max-width: 600px; 
                 opacity: 1;
             }
+            
+            /* Restauramos el padding grande en escritorio */
+            section {
+                padding: 80px 20px;
+            }
         }
 
         strong {
@@ -134,6 +144,7 @@
             padding-bottom: 20px;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
+            width: 100%; /* Asegura ajuste al contenedor */
         }
 
         .gallery-container::-webkit-scrollbar {
@@ -182,6 +193,7 @@
             gap: 40px;
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
 
         @media (min-width: 900px) {
@@ -195,6 +207,7 @@
             padding-bottom: 56.25%;
             height: 0;
             background: #000;
+            width: 100%;
         }
 
         .video-wrapper iframe {
@@ -247,8 +260,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 80px;
+            /* AJUSTE 3: Gap reducido en mobile para evitar que empuje el ancho */
+            gap: 30px; 
             flex-wrap: wrap;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .sponsors-grid-main {
+                gap: 80px; /* Vuelve a ser grande en tablet/desktop */
+            }
         }
 
         .sponsor-svg {
@@ -256,6 +277,7 @@
             width: auto;
             opacity: 0.9;
             transition: opacity 0.3s;
+            max-width: 80vw; /* Seguridad extra para que el logo no sea gigante en celus muy chicos */
         }
         
         .sponsor-svg:hover {
