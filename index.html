@@ -15,6 +15,7 @@
             --bg-color: #F9F8F4;
             --text-color: #1A1A1A;
             --accent-color: #C5A059;
+            --accent-hover: #a38243;
             --font-display: 'Playfair Display', serif;
             --font-body: 'Lato', sans-serif;
         }
@@ -95,14 +96,12 @@
             overflow: hidden; 
         }
 
-        /* --- IMAGEN HERO (Picture) --- */
         .hero-picture {
             display: block;
             width: 100%;
             z-index: -1;
         }
 
-        /* ESTILOS MOBILE (Por defecto) */
         .hero-picture {
             position: relative;
             margin-top: 0; 
@@ -119,7 +118,6 @@
             object-fit: contain; 
         }
 
-        /* --- ICONO SUPERIOR --- */
         .hero-top-icon {
             display: block;
             width: 50px; 
@@ -159,11 +157,104 @@
             z-index: 10;
         }
 
+        /* --- NUEVO CSS: ACORDEÓN CENTRADO --- */
+        .schedule-section {
+            padding-bottom: 60px;
+        }
+
+        /* Estilo del botón del acordeón */
+        .accordion-btn {
+            background-color: transparent;
+            color: var(--text-color);
+            cursor: pointer;
+            padding: 18px;
+            
+            /* CENTRADO Y ANCHO */
+            width: 100%;
+            max-width: 800px; /* Límite para que no se estire infinito */
+            display: block;   /* Comportamiento de bloque */
+            margin: 0 auto 15px auto; /* Centrado automático y margen inferior */
+
+            text-align: center;
+            border: 1px solid var(--accent-color);
+            outline: none;
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            transition: 0.4s;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        /* Efecto Hover y Activo */
+        .accordion-btn.active, .accordion-btn:hover {
+            background-color: var(--accent-color);
+            color: #fff;
+        }
+
+        /* Icono + / - a la derecha */
+        .accordion-btn::after {
+            content: '+'; 
+            font-size: 1.5rem;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: bold;
+        }
+
+        .accordion-btn.active::after {
+            content: '-';
+        }
+
+        /* Panel de contenido */
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            
+            /* CENTRADO Y ANCHO IGUAL AL BOTÓN */
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 15px auto; /* Centrado */
+            
+            border-left: 2px solid var(--accent-color);
+            border-right: 2px solid var(--accent-color);
+        }
+
+        .schedule-list {
+            list-style: none;
+            padding: 20px 10px;
+            margin: 0;
+        }
+
+        .schedule-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            font-size: 1.05rem;
+        }
+
+        .schedule-list li:last-child {
+            border-bottom: none;
+        }
+
+        .schedule-list li::before {
+            content: '•';
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
         /* --- ELEMENTOS NUEVOS EN MAPA --- */
         .map-internal-logo {
             display: block;
-            margin: 0 auto 30px auto; /* Centrado y espacio abajo */
-            max-width: 120px; /* Tamaño del logo */
+            margin: 0 auto 30px auto; 
+            max-width: 120px; 
             height: auto;
         }
 
@@ -171,7 +262,7 @@
             display: block;
             width: 100%;
             height: auto;
-            margin-bottom: 30px; /* Espacio antes del mapa */
+            margin-bottom: 30px; 
             border-radius: 4px;
         }
 
@@ -422,38 +513,57 @@
 <body>
 
     <section class="hero">
-        
         <picture class="hero-picture">
             <source media="(min-width: 1024px)" srcset="./image/imagen_cabeza.png">
             <img src="./image/imagen_cabeza_mobile.png" alt="Portada" class="hero-img">
         </picture>
-
         <img src="./image/uva.svg" alt="Icono" class="hero-top-icon">
-
         <p class="hero-year">Edición 2026</p>
         <h1>Desayuno<br>Real</h1>
-        
         <p class="hero-text">Una de las actividades empresariales y sociales más relevantes de la Fiesta Nacional de la Vendimia en MENDOZA.</p>
+        <p class="hero-text">El “Desayuno Real” es un <strong>homenaje de prestigio</strong> dentro de la Fiesta Nacional de la Vendimia. Más que una celebración, <strong>es un reconocimiento exclusivo a las soberanas</strong> —la Reina y Virreina Nacional de la Vendimia y las reinas departamentales— y un tributo esencial al <strong>sector vitivinícola de la Argentina.</strong></p>
+        <p class="hero-text">Este evento se ha consolidado como la <strong>cita cumbre de networking</strong> a nivel nacional y regional.</p>
+        <p class="hero-text">El Desayuno Real no solo genera un clima social de celebración, sino que se erige como un foro dinámico de <strong>intercambio, servicio y participación.</strong></p>
+    </section>
+
+    <section class="schedule-section">
         
-        <p class="hero-text">El “Desayuno Real” es un <strong>homenaje de prestigio</strong> dentro de la Fiesta Nacional de la Vendimia. Más que una celebración, <strong>es un reconocimiento exclusivo a las soberanas</strong> —la Reina y Virreina Nacional de la Vendimia y las reinas departamentales— y un tributo esencial al <strong>sector vitivinícola de la Argentina,</strong> uno de los principales motores productivos que tiene nuestro país. Un encuentro cultural, social y político, <strong>declarado de Interés Legislativo en el año 2006.</strong></p>
-        
-        <p class="hero-text">Este evento se ha consolidado como la <strong>cita cumbre de networking</strong> a nivel nacional y regional. Atrae anualmente a las figuras más influyentes del ámbito <strong>político</strong> (local y nacional), a <strong>empresarios</strong> líderes de Mendoza, Argentina y el extranjero, a <strong>celebridades</strong> del ámbito nacional, y a distinguidas <strong>instituciones.</strong></p>
-        
-        <p class="hero-text">El Desayuno Real no solo genera un clima social de celebración, sino que se erige como un foro dinámico de <strong>intercambio, servicio y participación,</strong> reforzando los lazos entre el sector público y el privado.</p>
-        
+        <button class="accordion-btn">EVENTO DESAYUNO REAL 2026</button>
+        <div class="panel">
+            <ul class="schedule-list">
+                <li>Bienvenida por autoridades anfitrionas</li>
+                <li>Recibimiento de Reina y Virreina Nacional de la Vendimia, junto a las candidatas al cetro vendimial 2026</li>
+                <li>Saludos protocolares autoridades de Gobierno Nacional, Provincial e Institucional</li>
+                <li>Servicio del Desayuno a Reinas de la mano de sus intendentes</li>
+                <li>Networking con invitados</li>
+                <li>Show Artístico</li>
+                <li>Copa de honor</li>
+                <li>Cierre del evento</li>
+            </ul>
+        </div>
+
+        <button class="accordion-btn">TOUR DESAYUNO REAL 2026</button>
+        <div class="panel">
+            <ul class="schedule-list">
+                <li>Bienvenida</li>
+                <li><strong>Sábado 7 de marzo:</strong> Visita y Almuerzo a bodega especial</li>
+                <li>Regreso a Hotel Hilton Mendoza – 17hs</li>
+                <li>Tarde libre</li>
+                <li>Regreso a su ciudad (sábado 7 tarde/noche o domingo 8 mañana). Horario a confirmar según vuelos.</li>
+                <li>Traslado personalizado: Hotel Hilton – Aeropuerto Mendoza</li>
+            </ul>
+        </div>
+
     </section>
 
     <div class="full-width-container">
-        
         <picture class="separator-picture">
             <source media="(min-width: 1024px)" srcset="./image/imagen_horizontal.png">
             <img src="./image/flyer boceto 2_Mesa de trabajo 1 copia 28.png" alt="Separador Visual" class="gallery-header-image">
         </picture>
-
     </div>
 
     <section class="gallery-section">
-        
         <h2>Galería</h2>
         <div class="gallery-container">
             <div class="gallery-item"><img src="./image/1.png" alt="DR"></div>
@@ -494,17 +604,15 @@
         <p style="margin-bottom: 20px;">Bodega LAMADRID ESTATE WINES, Luján de Cuyo, Mendoza.</p>
         
         <img src="./image/Marca-fondo-transparente.png" alt="Logo Locación" class="map-internal-logo">
-        
         <img src="./image/fachada-de-la-bodega.jpg" alt="Imagen Locación" class="map-internal-image">
 
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.5517522180457!2d-68.964604!3d-33.03635499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967dde289586ba99%3A0xa4e17f04467080f!2sLamadrid%20Estate%20Wines!5e1!3m2!1ses-419!2sar!4v1765575726718!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.5517522180457!2d-68.964604!3d-33.03635499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967dde289586ba99%3A0xa4e17f04467080f!2sLamadrid%20Estate%20Wines!5e1!3m2!1ses-419!2sar!4v1765575726718!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        
         </div>
     </section>
 
     <section class="sponsors-section">
         <h2>Organizan</h2>
-        
         <div class="sponsors-grid-main">
             <img src="./image/ciudadano.v2.svg" alt="Ciudadano.news" class="sponsor-svg">
             <img src="./image/Logo CEGC.svg" alt="Cooperativa EGC" class="sponsor-svg">
@@ -517,8 +625,25 @@
     </section>
 
     <footer>
-        <p>© 2025 Desayuno Real. Todos los derechos reservados.</p>
+        <p>© 2026 Desayuno Real. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion-btn");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                } 
+            });
+        }
+    </script>
 
 </body>
 </html>
