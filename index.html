@@ -157,7 +157,7 @@
             z-index: 10;
         }
 
-        /* --- NUEVO CSS: ACORDEÓN CENTRADO --- */
+        /* --- NUEVO CSS: ACORDEÓN CON FLECHA ABAJO --- */
         .schedule-section {
             padding-bottom: 60px;
         }
@@ -167,13 +167,19 @@
             background-color: transparent;
             color: var(--text-color);
             cursor: pointer;
-            padding: 18px;
+            padding: 15px 20px; /* Padding equilibrado */
             
             /* CENTRADO Y ANCHO */
             width: 100%;
-            max-width: 800px; /* Límite para que no se estire infinito */
-            display: block;   /* Comportamiento de bloque */
-            margin: 0 auto 15px auto; /* Centrado automático y margen inferior */
+            max-width: 800px; 
+            
+            /* FLEXBOX PARA ALINEAR TEXTO Y FLECHA VERTICALMENTE */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+            margin: 0 auto 15px auto; 
 
             text-align: center;
             border: 1px solid var(--accent-color);
@@ -183,7 +189,7 @@
             text-transform: uppercase;
             transition: 0.4s;
             letter-spacing: 1px;
-            position: relative;
+            line-height: 1.2;
         }
 
         /* Efecto Hover y Activo */
@@ -192,19 +198,28 @@
             color: #fff;
         }
 
-        /* Icono + / - a la derecha */
+        /* FLECHA SUTIL (Chevron) */
         .accordion-btn::after {
-            content: '+'; 
-            font-size: 1.5rem;
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-weight: bold;
+            content: ''; 
+            display: block;
+            width: 12px;
+            height: 12px;
+            
+            /* Bordes finos usando el color actual del texto (negro o blanco) */
+            border-right: 1px solid currentColor;
+            border-bottom: 1px solid currentColor;
+            
+            /* Rotación inicial: Apunta hacia abajo */
+            transform: rotate(45deg);
+            
+            margin-top: 8px; /* Espacio entre el texto y la flecha */
+            transition: transform 0.3s ease; /* Animación suave al girar */
         }
 
+        /* Flecha cuando está activo: Gira hacia arriba */
         .accordion-btn.active::after {
-            content: '-';
+            transform: rotate(-135deg);
+            margin-top: 12px; /* Pequeño ajuste visual */
         }
 
         /* Panel de contenido */
@@ -215,10 +230,9 @@
             overflow: hidden;
             transition: max-height 0.3s ease-out;
             
-            /* CENTRADO Y ANCHO IGUAL AL BOTÓN */
             width: 100%;
             max-width: 800px;
-            margin: 0 auto 15px auto; /* Centrado */
+            margin: 0 auto 15px auto; 
             
             border-left: 2px solid var(--accent-color);
             border-right: 2px solid var(--accent-color);
@@ -315,6 +329,13 @@
             
             section {
                 padding: 60px 20px; 
+            }
+            
+            /* Ajuste del acordeón en escritorio */
+            .accordion-btn, .panel {
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
 
@@ -546,10 +567,10 @@
         <div class="panel">
             <ul class="schedule-list">
                 <li>Bienvenida</li>
-                <li><strong>Sábado 7 de marzo:</strong> Visita y Almuerzo a bodega especial</li>
+                <li><strong>Sábado 7 de Marzo:</strong> Visita y Almuerzo a bodega especial</li>
                 <li>Regreso a Hotel Hilton Mendoza – 17hs</li>
                 <li>Tarde libre</li>
-                <li>Regreso a su ciudad (sábado 7 tarde/noche o domingo 8 mañana). Horario a confirmar según vuelos.</li>
+                <li>Regreso a su ciudad (Sábado 7 tarde/noche ó Domingo 8 mañana). Horario a confirmar según vuelos.</li>
                 <li>Traslado personalizado: Hotel Hilton – Aeropuerto Mendoza</li>
             </ul>
         </div>
