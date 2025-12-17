@@ -283,6 +283,18 @@
             border-radius: 4px;
         }
 
+        /* --- SPONSORS GRID (General / Mobile) --- */
+        .sponsors-grid-main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            width: 100%;
+            /* MODIFICACIÓN: Invertir orden en móvil */
+            flex-direction: row-reverse; 
+        }
+
         /* --- CONFIGURACIÓN ESCRITORIO --- */
         @media (min-width: 1024px) {
             .hero {
@@ -339,6 +351,11 @@
                 margin-left: auto;
                 margin-right: auto;
             }
+
+            /* MODIFICACIÓN: Restaurar orden normal en escritorio */
+            .sponsors-grid-main {
+                flex-direction: row;
+            }
         }
 
         strong { font-weight: 700; }
@@ -362,7 +379,6 @@
         .map-container iframe { width: 100%; height: 100%; border: 0; }
         .sponsors-section { text-align: center; border-top: 1px solid #ddd; margin-top: 40px; padding-bottom: 80px; }
         .sponsors-section h2 { font-size: 2.5rem; margin-bottom: 60px; }
-        .sponsors-grid-main { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; width: 100%; }
         .sponsor-svg { height: auto; width: auto; max-height: 80px; max-width: 250px; opacity: 0.9; transition: opacity 0.3s; }
         .sponsor-svg:hover { opacity: 1; }
         .closing-section { text-align: center; background-color: var(--text-color); color: white; padding: 100px 20px; }
@@ -390,11 +406,58 @@
 
     <section class="schedule-section">
         
+        <button class="accordion-btn">TOUR DESAYUNO REAL 2026</button>
+        <div class="panel">
+            <ul class="schedule-list">
+                <li>
+                    <span class="icon-gold">✈️</span>
+                    <div>
+                        <span class="day-title">Jueves 05/03</span>
+                        <strong>Llegada</strong>
+                        <span class="logistics-info">Traslado personalizado: Aeropuerto → Hotel Hilton Mendoza (Horario según vuelo).</span>
+                    </div>
+                </li>
+
+                <li>
+                    <img src="./image/uva.svg" alt="Uva" style="width: 30px; height: auto;">
+                    <div>
+                        <span class="day-title">Viernes 06/03</span>
+                        <strong>DESAYUNO REAL (08.30 h)</strong>
+                        <span class="logistics-info">Traslado personalizado: Hotel Hilton Mendoza → Bodega Lamadrid Estate Wines.</span>
+                        <br>
+                        <strong>Almuerzo Privado con invitados</strong>
+                        <span class="logistics-info">(En la misma ubicación).</span>
+                        <br>
+                        <strong>Regreso</strong>
+                        <span class="logistics-info">Traslado: Bodega Lamadrid Estate Wines → Hotel Hilton.</span>
+                    </div>
+                </li>
+
+                <li>
+                    <span class="icon-gold">🍇</span>
+                    <div>
+                        <span class="day-title">Sábado 07/03</span>
+                        <strong>Visita a bodega especial</strong>
+                        <span class="logistics-info">Traslado: Hotel Hilton Mendoza → Bodega Especial.</span>
+                        <br>
+                        <strong>Regreso al Hotel (17 h)</strong>
+                        <span class="logistics-info">Traslado: Bodega Especial → Hotel Hilton Mendoza.</span>
+                        <br>
+                        <strong>Tarde libre</strong>
+                        <span class="logistics-info">Tiempo de ocio.</span>
+                        <br>
+                        <strong>✈️ Regreso a su ciudad</strong>
+                        <span class="logistics-info">Traslado: Hotel Hilton Mendoza → Aeropuerto (sábado: tarde/noche o domingo: mañana).</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
         <button class="accordion-btn">EVENTO DESAYUNO REAL 2026</button>
         <div class="panel">
             <ul class="schedule-list">
                 <li>
-                    <span class="icon-gold">🎤</span>
+                    <img src="./image/uva.svg" alt="Uva" style="width: 30px; height: auto;">
                     <div>
                         <strong>Bienvenida</strong>
                         <span class="logistics-info">Por autoridades anfitrionas.</span>
@@ -415,7 +478,7 @@
                     </div>
                 </li>
                 <li>
-                    <span class="icon-gold">🥐</span>
+                    <span class="icon-gold">☕</span>
                     <div>
                         <strong>Servicio de Desayuno</strong>
                         <span class="logistics-info">Servido a Reinas de la mano de sus intendentes.</span>
@@ -447,53 +510,6 @@
                     <div>
                         <strong>Cierre</strong>
                         <span class="logistics-info">Finalización del evento.</span>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <button class="accordion-btn">TOUR DESAYUNO REAL 2026</button>
-        <div class="panel">
-            <ul class="schedule-list">
-                <li>
-                    <span class="icon-gold">✈️</span>
-                    <div>
-                        <span class="day-title">Jueves 05/03</span>
-                        <strong>Llegada</strong>
-                        <span class="logistics-info">Traslado personalizado: Aeropuerto → Hotel Hilton Mendoza (Horario según vuelo).</span>
-                    </div>
-                </li>
-
-                <li>
-                    <span class="icon-gold">🍇</span>
-                    <div>
-                        <span class="day-title">Viernes 06/03</span>
-                        <strong>DESAYUNO REAL (08.30 h)</strong>
-                        <span class="logistics-info">Traslado personalizado: Hotel Hilton Mendoza → Bodega Lamadrid Estate Wines.</span>
-                        <br>
-                        <strong>Almuerzo Privado con invitados</strong>
-                        <span class="logistics-info">(En la misma ubicación).</span>
-                        <br>
-                        <strong>Regreso</strong>
-                        <span class="logistics-info">Traslado: Bodega Lamadrid Estate Wines → Hotel Hilton.</span>
-                    </div>
-                </li>
-
-                <li>
-                    <span class="icon-gold">🥂</span>
-                    <div>
-                        <span class="day-title">Sábado 07/03</span>
-                        <strong>Visita + Almuerzo</strong>
-                        <span class="logistics-info">Traslado: Hotel Hilton Mendoza → Bodega Especial.</span>
-                        <br>
-                        <strong>Regreso al Hotel (17 h)</strong>
-                        <span class="logistics-info">Traslado: Bodega Especial → Hotel Hilton Mendoza.</span>
-                        <br>
-                        <strong>Tarde libre</strong>
-                        <span class="logistics-info">Tiempo de ocio.</span>
-                        <br>
-                        <strong>Regreso a su ciudad</strong>
-                        <span class="logistics-info">Traslado: Hotel Hilton Mendoza → Aeropuerto (sábado noche o domingo mañana).</span>
                     </div>
                 </li>
             </ul>
