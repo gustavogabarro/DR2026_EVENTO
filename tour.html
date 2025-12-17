@@ -291,8 +291,16 @@
             gap: 40px;
             flex-wrap: wrap;
             width: 100%;
-            /* MODIFICACIÓN: Invertir orden en móvil */
-            flex-direction: row-reverse; 
+        }
+
+        /* MODIFICACIÓN: Forzar el orden en móvil con 'order' */
+        /* Primer hijo (Ciudadano) pasa a posición 2 */
+        .sponsors-grid-main .sponsor-svg:nth-child(1) {
+            order: 2; 
+        }
+        /* Segundo hijo (CEGC) pasa a posición 1 */
+        .sponsors-grid-main .sponsor-svg:nth-child(2) {
+            order: 1; 
         }
 
         /* --- CONFIGURACIÓN ESCRITORIO --- */
@@ -352,9 +360,12 @@
                 margin-right: auto;
             }
 
-            /* MODIFICACIÓN: Restaurar orden normal en escritorio */
-            .sponsors-grid-main {
-                flex-direction: row;
+            /* MODIFICACIÓN: Restaurar el orden normal en escritorio */
+            .sponsors-grid-main .sponsor-svg:nth-child(1) {
+                order: 1; 
+            }
+            .sponsors-grid-main .sponsor-svg:nth-child(2) {
+                order: 2; 
             }
         }
 
