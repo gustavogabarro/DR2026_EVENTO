@@ -157,30 +157,23 @@
             z-index: 10;
         }
 
-        /* --- NUEVO CSS: ACORDEÓN CON FLECHA ABAJO --- */
+        /* --- ACORDEÓN --- */
         .schedule-section {
             padding-bottom: 60px;
         }
 
-        /* Estilo del botón del acordeón */
         .accordion-btn {
             background-color: transparent;
             color: var(--text-color);
             cursor: pointer;
-            padding: 15px 20px; /* Padding equilibrado */
-            
-            /* CENTRADO Y ANCHO */
+            padding: 15px 20px; 
             width: 100%;
             max-width: 800px; 
-            
-            /* FLEXBOX PARA ALINEAR TEXTO Y FLECHA VERTICALMENTE */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            
             margin: 0 auto 15px auto; 
-
             text-align: center;
             border: 1px solid var(--accent-color);
             outline: none;
@@ -192,48 +185,37 @@
             line-height: 1.2;
         }
 
-        /* Efecto Hover y Activo */
         .accordion-btn.active, .accordion-btn:hover {
             background-color: var(--accent-color);
             color: #fff;
         }
 
-        /* FLECHA SUTIL (Chevron) */
         .accordion-btn::after {
             content: ''; 
             display: block;
             width: 12px;
             height: 12px;
-            
-            /* Bordes finos usando el color actual del texto (negro o blanco) */
             border-right: 1px solid currentColor;
             border-bottom: 1px solid currentColor;
-            
-            /* Rotación inicial: Apunta hacia abajo */
             transform: rotate(45deg);
-            
-            margin-top: 8px; /* Espacio entre el texto y la flecha */
-            transition: transform 0.3s ease; /* Animación suave al girar */
+            margin-top: 8px; 
+            transition: transform 0.3s ease; 
         }
 
-        /* Flecha cuando está activo: Gira hacia arriba */
         .accordion-btn.active::after {
             transform: rotate(-135deg);
-            margin-top: 12px; /* Pequeño ajuste visual */
+            margin-top: 12px; 
         }
 
-        /* Panel de contenido */
         .panel {
             padding: 0 18px;
             background-color: white;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
-            
             width: 100%;
-            max-width: 800px;
+            max-width: 800px; 
             margin: 0 auto 15px auto; 
-            
             border-left: 2px solid var(--accent-color);
             border-right: 2px solid var(--accent-color);
         }
@@ -244,27 +226,48 @@
             margin: 0;
         }
 
+        /* MODIFICADO: Ahora usa flex para alinear ícono y texto */
         .schedule-list li {
-            padding: 12px 0;
+            padding: 15px 0;
             border-bottom: 1px solid #eee;
-            display: flex;
+            display: flex; 
             align-items: flex-start;
             gap: 15px;
             font-size: 1.05rem;
+            line-height: 1.5;
         }
 
         .schedule-list li:last-child {
             border-bottom: none;
         }
-
-        .schedule-list li::before {
-            content: '•';
+        
+        /* NUEVO: Estilo para los íconos dorados */
+        .icon-gold {
             color: var(--accent-color);
-            font-size: 1.5rem;
-            line-height: 1;
+            font-size: 1.3rem;
+            min-width: 30px; /* Ancho fijo para alineación */
+            text-align: center;
+            line-height: 1.4;
         }
 
-        /* --- ELEMENTOS NUEVOS EN MAPA --- */
+        .day-title {
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .logistics-info {
+            display: block;
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        /* --- MAPA --- */
         .map-internal-logo {
             display: block;
             margin: 0 auto 30px auto; 
@@ -280,7 +283,7 @@
             border-radius: 4px;
         }
 
-        /* CONFIGURACIÓN ESCRITORIO */
+        /* --- CONFIGURACIÓN ESCRITORIO --- */
         @media (min-width: 1024px) {
             .hero {
                 min-height: 90vh; 
@@ -331,7 +334,6 @@
                 padding: 60px 20px; 
             }
             
-            /* Ajuste del acordeón en escritorio */
             .accordion-btn, .panel {
                 max-width: 800px;
                 margin-left: auto;
@@ -339,196 +341,35 @@
             }
         }
 
-        strong {
-            font-weight: 700;
-        }
-
-        /* --- GALERÍA HORIZONTAL --- */
-        .gallery-section h2 {
-            font-size: 3rem;
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .gallery-container {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding-bottom: 20px;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            width: 100%;
-        }
-
-        .gallery-container::-webkit-scrollbar {
-            height: 6px;
-        }
-        .gallery-container::-webkit-scrollbar-thumb {
-            background: var(--text-color);
-            border-radius: 3px;
-        }
-
-        .gallery-item {
-            flex: 0 0 80vw;
-            height: 60vh;
-            scroll-snap-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        @media (min-width: 768px) {
-            .gallery-item {
-                flex: 0 0 400px;
-                height: 500px;
-            }
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        /* --- VIDEOS --- */
-        .video-section {
-            background-color: #fff;
-            width: 100%;
-            max-width: 100%;
-        }
-
-        .video-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        @media (min-width: 900px) {
-            .video-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            background: #000;
-            width: 100%;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* --- UBICACIÓN --- */
-        .map-section {
-            text-align: center;
-        }
-        .map-section h2 {
-            font-size: 3rem;
-            margin-bottom: 30px;
-        }
-        .map-container {
-            width: 100%;
-            height: 450px;
-            background-color: #ddd;
-            filter: grayscale(100%);
-            transition: filter 0.3s;
-        }
-        .map-container:hover {
-            filter: grayscale(0%);
-        }
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* --- SPONSORS --- */
-        .sponsors-section {
-            text-align: center;
-            border-top: 1px solid #ddd;
-            margin-top: 40px;
-            padding-bottom: 80px;
-        }
-
-        .sponsors-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-        }
-
-        .sponsors-grid-main {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px; 
-            flex-wrap: wrap;
-            width: 100%;
-        }
-
-        /* AJUSTE CORRECTIVO DE LOGOS */
-        .sponsor-svg {
-            height: auto;
-            width: auto;
-            max-height: 80px; 
-            max-width: 250px; 
-            opacity: 0.9;
-            transition: opacity 0.3s;
-        }
-        
-        .sponsor-svg:hover {
-            opacity: 1;
-        }
-
-        /* --- CIERRE --- */
-        .closing-section {
-            text-align: center;
-            background-color: var(--text-color);
-            color: white;
-            padding: 100px 20px;
-        }
-
-        .closing-logo {
-            max-width: 250px;
-            height: auto;
-            margin: 0 auto 30px auto; 
-            display: block;
-            filter: brightness(0) invert(1); 
-        }
-
-        .closing-section h2 {
-            font-size: clamp(2.5rem, 6vw, 5rem); 
-            margin-bottom: 20px;
-            line-height: 1.1;
-        }
-        
-        .closing-section p {
-            font-size: 1.2rem;
-            opacity: 0.8;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 40px;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            background-color: var(--bg-color);
-        }
+        strong { font-weight: 700; }
+        .gallery-section h2 { font-size: 3rem; margin-bottom: 40px; text-align: center; }
+        .gallery-container { display: flex; overflow-x: auto; gap: 20px; padding-bottom: 20px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; width: 100%; }
+        .gallery-container::-webkit-scrollbar { height: 6px; }
+        .gallery-container::-webkit-scrollbar-thumb { background: var(--text-color); border-radius: 3px; }
+        .gallery-item { flex: 0 0 80vw; height: 60vh; scroll-snap-align: center; position: relative; overflow: hidden; }
+        @media (min-width: 768px) { .gallery-item { flex: 0 0 400px; height: 500px; } }
+        .gallery-item img { width: 100%; height: 100%; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .video-section { background-color: #fff; width: 100%; max-width: 100%; }
+        .video-grid { display: grid; grid-template-columns: 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; width: 100%; }
+        @media (min-width: 900px) { .video-grid { grid-template-columns: 1fr 1fr; } }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; background: #000; width: 100%; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .map-section { text-align: center; }
+        .map-section h2 { font-size: 3rem; margin-bottom: 30px; }
+        .map-container { width: 100%; height: 450px; background-color: #ddd; filter: grayscale(100%); transition: filter 0.3s; }
+        .map-container:hover { filter: grayscale(0%); }
+        .map-container iframe { width: 100%; height: 100%; border: 0; }
+        .sponsors-section { text-align: center; border-top: 1px solid #ddd; margin-top: 40px; padding-bottom: 80px; }
+        .sponsors-section h2 { font-size: 2.5rem; margin-bottom: 60px; }
+        .sponsors-grid-main { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; width: 100%; }
+        .sponsor-svg { height: auto; width: auto; max-height: 80px; max-width: 250px; opacity: 0.9; transition: opacity 0.3s; }
+        .sponsor-svg:hover { opacity: 1; }
+        .closing-section { text-align: center; background-color: var(--text-color); color: white; padding: 100px 20px; }
+        .closing-logo { max-width: 250px; height: auto; margin: 0 auto 30px auto; display: block; filter: brightness(0) invert(1); }
+        .closing-section h2 { font-size: clamp(2.5rem, 6vw, 5rem); margin-bottom: 20px; line-height: 1.1; }
+        .closing-section p { font-size: 1.2rem; opacity: 0.8; max-width: 600px; margin: 0 auto; }
+        footer { text-align: center; padding: 40px; font-size: 0.9rem; opacity: 0.7; background-color: var(--bg-color); }
     </style>
 </head>
 <body>
@@ -543,8 +384,6 @@
         <h1>Desayuno<br>Real</h1>
         <p class="hero-text">Una de las actividades empresariales y sociales más relevantes de la Fiesta Nacional de la Vendimia en MENDOZA.</p>
         <p class="hero-text">El “Desayuno Real” es un <strong>homenaje de prestigio</strong> dentro de la Fiesta Nacional de la Vendimia. Más que una celebración, <strong>es un reconocimiento exclusivo a las soberanas</strong> —la Reina y Virreina Nacional de la Vendimia y las reinas departamentales— y un tributo esencial al <strong>sector vitivinícola de la Argentina.</strong></p>
-        <p class="hero-text">Este evento se ha consolidado como la <strong>cita cumbre de networking</strong> a nivel nacional y regional.</p>
-        <p class="hero-text">El Desayuno Real no solo genera un clima social de celebración, sino que se erige como un foro dinámico de <strong>intercambio, servicio y participación.</strong></p>
     </section>
 
     <section class="schedule-section">
@@ -552,26 +391,109 @@
         <button class="accordion-btn">EVENTO DESAYUNO REAL 2026</button>
         <div class="panel">
             <ul class="schedule-list">
-                <li>Bienvenida por autoridades anfitrionas</li>
-                <li>Recibimiento de Reina y Virreina Nacional de la Vendimia, junto a las candidatas al cetro vendimial 2026</li>
-                <li>Saludos protocolares autoridades de Gobierno Nacional, Provincial e Institucional</li>
-                <li>Servicio del Desayuno a Reinas de la mano de sus intendentes</li>
-                <li>Networking con invitados</li>
-                <li>Show Artístico</li>
-                <li>Copa de honor</li>
-                <li>Cierre del evento</li>
+                <li>
+                    <span class="icon-gold">🎤</span>
+                    <div>
+                        <strong>Bienvenida</strong>
+                        <span class="logistics-info">Por autoridades anfitrionas.</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="icon-gold">👑</span>
+                    <div>
+                        <strong>Recepción Real</strong>
+                        <span class="logistics-info">Reina y Virreina Nacional de la Vendimia, junto a las candidatas 2026.</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="icon-gold">🤝</span>
+                    <div>
+                        <strong>Saludos Protocolares</strong>
+                        <span class="logistics-info">Autoridades de Gobierno Nacional, Provincial e Institucional.</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="icon-gold">🥐</span>
+                    <div>
+                        <strong>Servicio de Desayuno</strong>
+                        <span class="logistics-info">Servido a Reinas de la mano de sus intendentes.</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="icon-gold">💬</span>
+                    <div>
+                        <strong>Networking</strong>
+                        <span class="logistics-info">Encuentro con invitados especiales.</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="icon-gold">🎭</span>
+                    <div>
+                        <strong>Show Artístico</strong>
+                        <span class="logistics-info">Espectáculo en vivo.</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="icon-gold">🍷</span>
+                    <div>
+                        <strong>Copa de Honor</strong>
+                        <span class="logistics-info">Brindis oficial.</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="icon-gold">👋</span>
+                    <div>
+                        <strong>Cierre</strong>
+                        <span class="logistics-info">Finalización del evento.</span>
+                    </div>
+                </li>
             </ul>
         </div>
 
         <button class="accordion-btn">TOUR DESAYUNO REAL 2026</button>
         <div class="panel">
             <ul class="schedule-list">
-                <li>Bienvenida</li>
-                <li><strong>Sábado 7 de Marzo:</strong> Visita y Almuerzo a bodega especial</li>
-                <li>Regreso a Hotel Hilton Mendoza – 17hs</li>
-                <li>Tarde libre</li>
-                <li>Regreso a su ciudad (Sábado 7 tarde/noche ó Domingo 8 mañana). Horario a confirmar según vuelos.</li>
-                <li>Traslado personalizado: Hotel Hilton – Aeropuerto Mendoza</li>
+                <li>
+                    <span class="icon-gold">✈️</span>
+                    <div>
+                        <span class="day-title">Jueves 05/03</span>
+                        <strong>Llegada</strong>
+                        <span class="logistics-info">Traslado personalizado: Aeropuerto → Hotel Hilton Mendoza (Horario según vuelo).</span>
+                    </div>
+                </li>
+
+                <li>
+                    <span class="icon-gold">🍇</span>
+                    <div>
+                        <span class="day-title">Viernes 06/03</span>
+                        <strong>DESAYUNO REAL (08.30 h)</strong>
+                        <span class="logistics-info">Traslado personalizado: Hotel Hilton Mendoza → Bodega Lamadrid Estate Wines.</span>
+                        <br>
+                        <strong>Almuerzo Privado con invitados</strong>
+                        <span class="logistics-info">(En la misma ubicación).</span>
+                        <br>
+                        <strong>Regreso</strong>
+                        <span class="logistics-info">Traslado: Bodega Lamadrid Estate Wines → Hotel Hilton.</span>
+                    </div>
+                </li>
+
+                <li>
+                    <span class="icon-gold">🥂</span>
+                    <div>
+                        <span class="day-title">Sábado 07/03</span>
+                        <strong>Visita + Almuerzo</strong>
+                        <span class="logistics-info">Traslado: Hotel Hilton Mendoza → Bodega Especial.</span>
+                        <br>
+                        <strong>Regreso al Hotel (17 h)</strong>
+                        <span class="logistics-info">Traslado: Bodega Especial → Hotel Hilton Mendoza.</span>
+                        <br>
+                        <strong>Tarde libre</strong>
+                        <span class="logistics-info">Tiempo de ocio.</span>
+                        <br>
+                        <strong>Regreso a su ciudad</strong>
+                        <span class="logistics-info">Traslado: Hotel Hilton Mendoza → Aeropuerto (sábado noche o domingo mañana).</span>
+                    </div>
+                </li>
             </ul>
         </div>
 
@@ -579,8 +501,8 @@
 
     <div class="full-width-container">
         <picture class="separator-picture">
-            <source media="(min-width: 1024px)" srcset="./image/imagen_horizontal.png">
-            <img src="./image/flyer boceto 2_Mesa de trabajo 1 copia 28.png" alt="Separador Visual" class="gallery-header-image">
+            <source media="(min-width: 1024px)" srcset="./image/dr26_horizontal.png">
+            <img src="./image/dr26_flyer.png" alt="Separador Visual" class="gallery-header-image">
         </picture>
     </div>
 
